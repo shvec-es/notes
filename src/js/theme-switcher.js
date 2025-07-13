@@ -1,3 +1,5 @@
+import { getFromLS, saveInLS } from './local-storage-api';
+
 export const themeSwitcher = () => {
   const theme = getFromLS('theme');
   if (theme === 'theme-dark') {
