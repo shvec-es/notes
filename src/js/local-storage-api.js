@@ -4,5 +4,10 @@ export const saveInLS = (key, data) => {
 };
 
 export const getFromLS = key => {
-  return JSON.parse(localStorage.getItem(key)) || null;
+  const savedData = localStorage.getItem(key);
+  if (savedData) {
+    const parsedData = JSON.parse(savedData);
+    return parsedData;
+  }
+  return null;
 };

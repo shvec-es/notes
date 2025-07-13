@@ -4,6 +4,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { refs } from './js/refs';
 import { addTask, deleteTask, getAllTasks } from './js/tasks';
 import { getFromLS, saveInLS } from './js/local-storage-api';
+import { themeSwitcher } from './js/theme-switcher';
 
 // 2 - додаємо слухача на форму, забираємо значення з інпутів з перевіркою на пустий рядок
 refs.form.addEventListener('submit', e => {
@@ -46,15 +47,4 @@ if (theme === 'theme-light') {
 }
 
 // 7 - додаємо слухача на кнопку для перемикання теми
-refs.themeSwitcher.addEventListener('click', () => {
-  const theme = getFromLS('theme');
-  if (theme === 'theme-dark') {
-    document.body.classList.remove('theme-dark');
-    document.body.classList.add('theme-light');
-    saveInLS('theme', 'theme-light');
-  } else {
-    document.body.classList.add('theme-dark');
-    document.body.classList.remove('theme-light');
-    saveInLS('theme', 'theme-dark');
-  }
-});
+refs.themeSwitcher.addEventListener('click', themeSwitcher);
